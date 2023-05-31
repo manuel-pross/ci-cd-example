@@ -5,7 +5,14 @@ on:
   pull_request:
     branches: [main, master]
 jobs:
-  test:
+  dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: npm ci
+
+  playwright-tests:
+    needs: dependencies
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -40,3 +47,11 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+
+  unit-tests:
+    needs: dependencies
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: run unit tests
+        run: npm run test:unit
