@@ -31,7 +31,12 @@
 
 <div>
 	<div id="editor" use:editor />
-	<textarea name="markdown" bind:value={markdown} hidden />
+	<textarea
+		name="markdown"
+		data-testid="test-editor"
+		bind:value={markdown}
+		hidden
+	/>
 </div>
 
 <style>
