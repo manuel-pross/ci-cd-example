@@ -11,7 +11,7 @@ on:
         - name: Run tests
           run: npx playwright test
           env:
-            BASE_URL: ${{ github.event.deployment_status.target_url }}
+            BASE_URL: https://ci-cd-example-ruddy.vercel.app/
 
   push:
     branches: [main, master]
